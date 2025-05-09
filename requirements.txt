@@ -1,0 +1,13 @@
+# Web Scraping
+requests
+beautifulsoup4
+
+# PostgreSQL ORM
+SQLAlchemy>=2.0
+psycopg2-binary
+
+# Environment Variable Support
+python-dotenv
+
+# Dev/CLI Enhancements
+tqdm
