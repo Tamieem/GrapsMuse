@@ -1,4 +1,3 @@
-# database/models.py
 
 from sqlalchemy import Column, Integer, String, Boolean, Date, DateTime, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import declarative_base, relationship
@@ -29,7 +28,7 @@ class Wrestler(Base):
     __tablename__ = "wrestlers"
 
     id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
+    name = Column(String, nullable=False, unique=True)
     promotion_id = Column(Integer, ForeignKey("promotions.id"))
     height_cm = Column(Integer)
     weight_kg = Column(Integer)
@@ -48,7 +47,18 @@ class Wrestler(Base):
     gimmicks = relationship("Gimmick", back_populates="wrestler")
 
     def __repr__(self):
-        return f"<Wrestler(name='{self.name}', active={self.is_active})>"
+        return (
+            f"<Wrestler(name='{self.name}', "
+            f"promotion_id={self.promotion_id}, "
+            f"cagematch_id={self.cagematch_id}, "
+            f"age={self.age}, "
+            f"is_active={self.is_active}, "
+            f"years_active={self.years_active}, "
+            f"retirement_date={self.retirement_date}, "
+            f"height_cm={self.height_cm}, weight_kg={self.weight_kg}, "
+            f"debut={self.debut}, titles_won={self.titles_won}, "
+            f"title_reigns={self.title_reigns}, is_champion={self.is_champion})>"
+        )
 
 
 class Gimmick(Base):

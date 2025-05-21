@@ -44,7 +44,7 @@ CREATE TYPE "championship_status" AS ENUM (
 
 CREATE TABLE "wrestlers" (
   "id" SERIAL PRIMARY KEY,
-  "name" VARCHAR NOT NULL,
+  "name" VARCHAR NOT NULL UNIQUE,
   "promotion_id" INT,
   "height_cm" INT,
   "weight_kg" INT,
