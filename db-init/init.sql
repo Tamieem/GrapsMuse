@@ -62,7 +62,6 @@ CREATE TABLE "wrestlers" (
 CREATE TABLE "gimmicks" (
   "id" serial PRIMARY KEY,
   "wrestler_id" int,
-  "gimmick_id" int,
   "gimmick_name" varchar,
   "promotion_id" int,
   "is_default" boolean,
@@ -237,6 +236,8 @@ ALTER TABLE "gimmicks" ADD FOREIGN KEY ("wrestler_id") REFERENCES "wrestlers" ("
 ALTER TABLE "gimmicks" ADD FOREIGN KEY ("gimmick_id") REFERENCES "gimmicks" ("id");
 
 ALTER TABLE "gimmicks" ADD FOREIGN KEY ("promotion_id") REFERENCES "promotions" ("id");
+
+ALTER TABLE gimmicks ADD CONSTRAINT unique_gimmick_per_wrestler UNIQUE (wrestler_id, gimmick_name);
 
 ALTER TABLE "tag_teams" ADD FOREIGN KEY ("wrestler_one_id") REFERENCES "wrestlers" ("id");
 

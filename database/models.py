@@ -66,7 +66,6 @@ class Gimmick(Base):
 
     id = Column(Integer, primary_key=True)
     wrestler_id = Column(Integer, ForeignKey("wrestlers.id"))
-    gimmick_id = Column(Integer)  # Not a foreign key; external reference
     gimmick_name = Column(String)
     debut_promotion_id = Column(Integer, ForeignKey("promotions.id"))
     is_default = Column(Boolean)
